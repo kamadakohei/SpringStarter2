@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.demo.model.Book;
@@ -19,12 +20,12 @@ public class HomeController {
 
 	@GetMapping("/home")
 	// localhost:8082/homeへのGETに対する処理をさせる
-	public String getHome() {
-
-
+	public String getHome(Model model) {
 
 		List<Book> bookList = bookService.selectBookList();
+
+		model.addAttribute("bookList", bookList);
 		// GETリクエストに対してhome.htmlを表示させる
-		return "home/home";
+		return "home/bookList";
 	}
 }

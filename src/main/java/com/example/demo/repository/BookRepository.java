@@ -26,10 +26,10 @@ public class BookRepository {
 		List<Book> bookList = new ArrayList<>();
 
 		//取得したデータを結果返却用の変数Listに格納していく
-		for(Map<String, Object>map: getList) {
+		for(Map<String, Object> map: getList) {
 			Book book = new Book();
 
-			book.setBookId((int)map.get("bookId"));
+			book.setBookId((int)map.get("book_id"));
 			book.setTitle((String)map.get("title"));
 			book.setAuthor((String)map.get("author"));
 
