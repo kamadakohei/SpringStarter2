@@ -17,7 +17,7 @@ public class HomeController {
 	BookService bookService;
 
 
-
+	//Bookリスト一覧画面のGETメソッド
 	@GetMapping("/home")
 	// localhost:8082/homeへのGETに対する処理をさせる
 	public String getHome(Model model) {
@@ -28,4 +28,9 @@ public class HomeController {
 		// GETリクエストに対してhome.htmlを表示させる
 		return "home/bookList";
 	}
+
+	//Bookリスト登録画面のGETメソッド
+	//@GetMapping("/")
+
+
 }
