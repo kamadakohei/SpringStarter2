@@ -37,4 +37,19 @@ public class BookRepository {
 		}
 		return bookList;
 	}
+
+	public int insertOne(Book book) throws DataAccessException{
+
+		//insert
+		int rowNumber =  jdbc.update("INSERT INTO booklist(book_id, title, author) VALUES(?, ?, ?)", book.getBookId(), book.getTitle(), book.getAuthor());
+
+		return rowNumber;
+	}
+
+	public int DeleteOne(int bookId) throws DataAccessException{
+
+		//delete
+		int rowNumber = jdbc.update("DELETE FROM booklist WHERE book_Id = ?", bookId);
+		return rowNumber;
+	}
 }

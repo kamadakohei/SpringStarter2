@@ -14,18 +14,23 @@
 		<div class="page-header">
 			<h1>ユーザー一覧</h1>
 		</div>
-		<table class="table table-bordered teble-hover table-striped">
+		<table class="table table-bordered teble-hover table-striped " style="width: 50%;">
 			<tr>
 				<th class="info col-sm-2">BookId</th>
 				<th class="info col-sm-2">Title</th>
 				<th class="info col-sm-2">Author</th>
+				<th class="info col-sm-2">&nbsp;</th>
 			<tr th:each="book : ${bookList}">
 				<td th:text="${book.bookId}"></td>
 				<td th:text="${book.title}"></td>
 				<td th:text="${book.author}"></td>
+				<td>
+					<a class="btn btn-warning" th:href="@{'/updateBook'}">更新</a>
+					<a class="btn btn-danger" th:href="@{'/deleteBook'}">削除</a>
+				</td>
 			</tr>
 		</table>
-		<a class="btn btn-primary" >登録</a>
+		<a class="btn btn-primary"  th:href="@{'/addBook'}">登録</a>
 	</div>
 </body>
 </html>

@@ -19,4 +19,30 @@ public class BookService {
 
 		return bookRepository.selectBookList();
 	}
+
+	public boolean insert(Book book) {
+
+		int rowNumber = bookRepository.insertOne(book);
+
+		boolean result = false;
+
+		if(rowNumber > 0) {
+			result = true;
+		}
+
+		return result;
+	}
+
+	//1件更新用メソッド
+	public boolean deteleOne(int bookId) {
+		int rowNumber = bookRepository.DeleteOne(bookId);
+
+		boolean result = false;
+
+		if(rowNumber > 0) {
+			result = true;
+		}
+
+		return result;
+	}
 }
