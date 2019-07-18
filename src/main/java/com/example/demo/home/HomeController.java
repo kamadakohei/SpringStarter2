@@ -59,6 +59,12 @@ public class HomeController {
 
 		return "redirect:/home";
 	}
+	
+	//更新ページへのGETリクエスト
+	@GetMapping ("/deleteBook")
+	public String getdelete(Model model) {
+		
+	}
 
 
 }
