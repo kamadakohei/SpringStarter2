@@ -33,7 +33,7 @@ public class BookService {
 		return result;
 	}
 
-	//1件更新用メソッド
+	//1件削除用メソッド
 	public boolean deteleOne(int bookId) {
 		int rowNumber = bookRepository.DeleteOne(bookId);
 
@@ -45,4 +45,5 @@ public class BookService {
 
 		return result;
 	}
+
 }

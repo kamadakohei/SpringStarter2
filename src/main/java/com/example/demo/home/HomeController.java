@@ -39,7 +39,7 @@ public class HomeController {
 		return "home/addBook";
 	}
 
-	//Bookリスト登録画面の‘POSTメソッド
+	//Bookリスト登録画面のPOSTメソッド
 	@PostMapping("/addBook")
 	public String postaddBook(@ModelAttribute AddBookForm form, BindingResult bindingResult, Model model) {
 
@@ -59,12 +59,8 @@ public class HomeController {
 
 		return "redirect:/home";
 	}
-	
-	//更新ページへのGETリクエスト
-	@GetMapping ("/deleteBook")
-	public String getdelete(Model model) {
-		
-	}
 
-
+	//ユーザー削除用処理
+	@PostMapping(values="/deleteBook", params="delete")
+	public String postdeleteBook(@ModelAttribute )
 }
