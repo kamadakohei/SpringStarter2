@@ -61,6 +61,6 @@ public class HomeController {
 	}
 
 	//ユーザー削除用処理
-	@PostMapping(values="/deleteBook", params="delete")
-	public String postdeleteBook(@ModelAttribute )
+	//@PostMapping(values="/deleteBook", params="delete")
+	//public String postdeleteBook(@ModelAttribute )
 }

@@ -46,4 +46,9 @@ public class BookService {
 		return result;
 	}
 
+	//1件取得用メソッド
+	public Book selectOne(int bookId) {
+		return bookRepository.selectOne(bookId);
+	}
+
 }

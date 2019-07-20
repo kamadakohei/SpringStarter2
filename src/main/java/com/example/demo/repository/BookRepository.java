@@ -52,4 +52,19 @@ public class BookRepository {
 		int rowNumber = jdbc.update("DELETE FROM booklist WHERE book_Id = ?", bookId);
 		return rowNumber;
 	}
+
+	public Book selectOne(int bookId) throws DataAccessException{
+
+		//selectOne
+		Map<String, Object> map = jdbc.queryForMap("select * from booklist where book_id = ?", bookId);
+
+
+		Book book = new Book();
+
+		book.setBookId((int)map.get("book_id"));
+		book.setTitle((String)map.get("title"));
+		book.setAuthor((String)map.get("author"));
+
+		return book;
+	}
 }
