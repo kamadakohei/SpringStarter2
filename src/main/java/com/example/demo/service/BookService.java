@@ -34,7 +34,7 @@ public class BookService {
 	}
 
 	//1件削除用メソッド
-	public boolean deteleOne(int bookId) {
+	public boolean deleteOne(int bookId) {
 		int rowNumber = bookRepository.DeleteOne(bookId);
 
 		boolean result = false;
@@ -51,4 +51,16 @@ public class BookService {
 		return bookRepository.selectOne(bookId);
 	}
 
+	//1件更新用メソッド
+	public boolean updateOne(Book book) {
+		int rowNumber = bookRepository.UpdateOne(book);
+
+		boolean result = false;
+
+		if(rowNumber > 0) {
+			result = true;
+			System.out.println("成功");
+		}
+		return result;
+	}
 }

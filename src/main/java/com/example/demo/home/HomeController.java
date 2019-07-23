@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.domain.AddBookForm;
@@ -60,7 +61,79 @@ public class HomeController {
 		return "redirect:/home";
 	}
 
+	//ユーザー削除画面のGETメソッド
+	@GetMapping("/deleteBook/{id}")
+	public String getdeleteBook(@ModelAttribute AddBookForm form, Model model, @PathVariable("id") int bookId)
+	{
+			Book book = bookService.selectOne(bookId);
+
+
+			//対象のデータがない場合はエラーページに遷移させる必要あり
+			if(book != null) {
+			form.setBookId(book.getBookId());
+			form.setTitle(book.getTitle());
+			form.setAuthor(book.getAuthor());
+
+			model.addAttribute("addBookForm", form);
+
+		}
+		return "home/deleteBook";
+	}
+
+
 	//ユーザー削除用処理
-	//@PostMapping(values="/deleteBook", params="delete")
-	//public String postdeleteBook(@ModelAttribute )
+	@PostMapping("/deleteBook")
+	public String postdeleteBook(@ModelAttribute AddBookForm form, Model model)
+	{
+		boolean result = bookService.deleteOne(form.getBookId());
+
+		if(result = true) {
+			model.addAttribute("result", "削除成功");
+		}else {
+			model.addAttribute("result", "削除失敗");
+		}
+		return getHome(model);
+	}
+
+	//ユーザー更新用のGETメソッド
+	@GetMapping("/updateBook/{id}")
+	public String getupdateBook(@ModelAttribute AddBookForm form, Model model, @PathVariable("id") int bookId) {
+
+		Book book = bookService.selectOne(bookId);
+
+		//対象のデータがない場合はエラーページに遷移させる必要あり
+		if(book != null) {
+
+			form.setBookId(book.getBookId());
+			form.setTitle(book.getTitle());
+			form.setAuthor(book.getAuthor());
+			model.addAttribute("addBookForm", form);
+		}
+		return "home/updateBook";
+	}
+
+	//ユーザー更新用処理
+	@PostMapping("/updateBook")
+	public String postupdateBook(@ModelAttribute AddBookForm form, Model model) {
+
+		Book book = new Book();
+
+		book.setBookId(form.getBookId());
+		book.setTitle(form.getTitle());
+		book.setAuthor(form.getAuthor());
+
+		//更新処理
+		boolean result = bookService.updateOne(book);
+
+		if(result = true) {
+			model.addAttribute("result", "更新成功");
+			System.out.println("成功");
+		}else {
+			model.addAttribute("result", "更新失敗");
+		}
+
+		return getHome(model);
+	}
 }
+
+

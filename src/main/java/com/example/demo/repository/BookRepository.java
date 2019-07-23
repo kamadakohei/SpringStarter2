@@ -67,4 +67,11 @@ public class BookRepository {
 
 		return book;
 	}
+
+	public int UpdateOne(Book book) throws DataAccessException{
+
+		//update
+		int rowNumber = jdbc.update("update booklist set title = ?, author = ? where book_id = ?", book.getTitle(), book.getAuthor(), book.getBookId());
+		return rowNumber;
+	}
 }

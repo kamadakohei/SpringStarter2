@@ -26,8 +26,8 @@
 						<td th:text="${book.title}"></td>
 						<td th:text="${book.author}"></td>
 						<td>
-							<a class="btn btn-warning" th:href="@{'/updateBook'}">更新</a>
-							<a class="btn btn-danger" th:href="@{'/deleteBook'}">削除</a>
+							<a class="btn btn-warning" th:href="@{'/updateBook/' + ${book.bookId}}">更新</a>
+							<a class="btn btn-danger" th:href="@{'/deleteBook/' +  ${book.bookId}}">削除</a>
 						</td>
 					</tr>
 				</table>
