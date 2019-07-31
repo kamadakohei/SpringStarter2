@@ -1,2 +1,7 @@
 # SpringStarter2
-SpringbootSampleApp
+SpringでのCRUDアプリ作成
+
+# 苦労した点
+- たくさんのO/Rマッパーがあり、どれを使用すればよいのか迷った。
+- DIの仕組みがわからず、エラーが出た際に困った
+- パッケージの切りかたがわからず困った
